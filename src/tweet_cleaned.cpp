@@ -15,8 +15,9 @@ int main ()
 {
 	fstream in_tweet ; 
 
-	in_tweet.open ("tweet2.txt") ; 
-	ofstream out_file  ("ft1.txt");
+	in_tweet.open ("../tweet_input/tweet2.txt") ;
+ 
+	ofstream out_file  ("../tweet_output/ft1.txt");
 
 	string line;
 
