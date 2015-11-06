@@ -527,7 +527,7 @@ int compare_hour ( string time_1 , string time_2 )
 	int t1 = h1 * 3600 + m1 * 60 + s1 ;
 	int t2 = h2 * 3600 + m2 * 60 + s2 ;
 
-	if ( t1 <= t2 - 60 )
+	if ( t1 <= t2 - 60 && t1 <= t2)
 	{
 		return 0 ; 
 	}
