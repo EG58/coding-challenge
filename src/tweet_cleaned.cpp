@@ -15,7 +15,7 @@ int main ()
 {
 	fstream in_tweet ; 
 
-	in_tweet.open ("../tweet_input/tweet.txt") ;
+	in_tweet.open ("../tweet_input/tweet2.txt") ;
  
 	ofstream out_file  ("../tweet_output/ft1.txt");
 
@@ -35,7 +35,7 @@ int main ()
 	{
 		getline (in_tweet,line);
 
-		//cout << line ;
+		//// cout << line ;
 
 		line_size = line . size () ; 
 
@@ -78,9 +78,9 @@ int main ()
 		
 	}
 
-	cout << endl << "Hello Wolrd" << endl << endl ; 
+	// cout << endl << "Hello Wolrd" << endl << endl ; 
 
-	cout << " num_of_unicod_tweets = " << num_of_unicod_tweets << endl ; 
+	// cout << " num_of_unicod_tweets = " << num_of_unicod_tweets << endl ; 
 
 	out_file << endl << num_of_unicod_tweets << " tweets contained unicode." << endl ; 
 
@@ -91,7 +91,7 @@ int main ()
 int clean_text ( string line , ofstream& out_file , string ttime)
 {
 
-	cout << line << endl ; 
+	// cout << line << endl ; 
 
 	string modified = "" ;  
 
@@ -154,8 +154,8 @@ int clean_text ( string line , ofstream& out_file , string ttime)
 	}
 
 
-	cout << "--------Modified --------" << endl ;
-	cout << modified << endl << endl ; 
+	// cout << "--------Modified --------" << endl ;
+	// cout << modified << endl << endl ; 
 
 	out_file << modified << " (timestamp: " << ttime << ")" << endl ;  ;  
 
@@ -174,7 +174,7 @@ int clean_text ( string line , ofstream& out_file , string ttime)
 
 string extract_time (string line)
 {
-	//cout << "Time  =" << line  << endl ; 
+	//// cout << "Time  =" << line  << endl ; 
 
 	string ext_time = line ;  
 
@@ -200,8 +200,8 @@ string extract_time (string line)
 		i++;
 	}
 
-	cout << "--------Modified Time = --------" << endl ;
-	cout << ext_time << endl; 
+	// cout << "--------Modified Time = --------" << endl ;
+	// cout << ext_time << endl; 
 
 
 	return ext_time;
