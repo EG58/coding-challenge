@@ -310,7 +310,24 @@ string extract_time (string line)
 
 int creat_edge_entity ( string edge , int clique_size )
 {
-    cout << " Creating Edge " << edge << " clique_size = " << clique_size <<  endl ;  ; 
+    
+    //--------------------------------------------------------------------	
+    for ( int u = 0 ; u < edge_list . size (); u ++ )	
+    {
+
+		if ( ! compare_time ( edge_list . at (u) ._time , current_time) ) // if it is older than 60 sec
+		{
+			// ------------ Updating E --------------------	
+			E = E - 2 ; 
+			// ----------------------------------------------	
+				
+			edge_list . erase ( edge_list . begin () + u )  ; // Removing some of Edges
+			
+		}
+    }
+    // --------------------------------------- 		
+
+    cout << " Creating Edge " << edge << " clique_size = " << clique_size << " Current_edge_list has " << edge_list . size () << " edges "<< endl ;   
 
     istringstream iss(edge);
 
@@ -368,6 +385,7 @@ int creat_edge_entity ( string edge , int clique_size )
 			E = E + 2 ; 
 
 			cout << "&&& Creating " << first_node << "<__>" << second_node << endl ;
+			cout << "edge_list has " << edge_list . size () << " edges " << endl ; 
 			
 		}
 
@@ -398,11 +416,12 @@ int creat_edge_entity ( string edge , int clique_size )
 			{
 					new_edge . _tag1 = first_node ;
 					new_edge . _tag2 = second_node ;
-					new_edge . _time = current_time ; 
+					new_edge . _time = current_time ;
+
+					edge_list . push_back ( new_edge ) ;  
 
 					cout << "&&& Adding " << first_node << "<__>" << second_node << " edge_list . size () = " << edge_list . size () << endl ;
 	
-					edge_list . push_back ( new_edge ) ; 
 
 					E = E + 2 ; 
 
@@ -420,20 +439,7 @@ int creat_edge_entity ( string edge , int clique_size )
     }		
 
 
-    //--------------------------------------------------------------------	
-    for ( int u = 0 ; u < edge_list . size (); u ++ )	
-    {
-
-		if ( ! compare_time ( edge_list . at (u) ._time , current_time) ) // if it is older than 60 sec
-		{
-			// ------------ Updating E --------------------	
-			E = E - 2 ; 
-			// ----------------------------------------------	
-				
-			edge_list . erase ( edge_list . begin () + u )  ; // Removing some of Edges
-			
-		}
-    }
+    
 		
     return 0 ; 	 
 } 
@@ -527,12 +533,17 @@ int compare_hour ( string time_1 , string time_2 )
 	int t1 = h1 * 3600 + m1 * 60 + s1 ;
 	int t2 = h2 * 3600 + m2 * 60 + s2 ;
 
-	if ( t1 <= t2 - 60 && t1 <= t2)
+	if ( t1 < t2 - 60 )
 	{
 		return 0 ; 
 	}
 	else
-		return 1 ;  // T1 is less than 60 second before T2
+	{
+		//if ( t1 <= t2 ) // t2 - 60 <= t1 
+			return 1 ;  // T1 is less than 60 second before T2
+
+		//return 0 ; 
+	}
 
 }
 
