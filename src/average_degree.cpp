@@ -24,7 +24,7 @@ string extract_time (string line);
 
 int compare_time ( string first, string second ) ;  // if first is less than 60 seconds before second
 int compare_hour ( string time_1 , string time_2 ) ; 
-int compare_date ( string date1 , string date2 , string time_1 , string time_2 );
+int compare_date ( string  , string  , string  , string  , string  , string  , string  , string  );
 
 int creat_edge_entity (string edge , int clique_size ); 
 
@@ -504,7 +504,7 @@ int compare_time ( string first, string second ) // if first is less than 60 sec
 	
 	else
 	{
-		return compare_date (date_1 , date_2 , time_1 , time_2  )  ;
+		return compare_date ( month_1 , month_2 , day_1 , day_2 , year_1 , year_2 , time_1 , time_2  )  ;
 	}
 }
 
@@ -536,10 +536,49 @@ int compare_hour ( string time_1 , string time_2 )
 
 }
 
-int compare_date ( string date1 , string date2 , string time_1 , string time_2 )
+int compare_date ( string month_1 , string month_2 , string day_1 , string day_2 , string year_1 , string year2 ,   string time_1 , string time_2  )  
 {
 	// Jan Feb Mar
 	// Apr May Jun
 	// Jul Aug Sept 
         // Oct Nov Dec
+
+	/*
+	if ( year_1 != year_2 )
+	{
+		if ( month_1 == "Dec" && month_2 == "Jan" )
+		{
+			return 1 ; 
+		}
+
+
+	}
+
+	else // years are equal 
+	{
+
+		if ( month_1 != month_2 )
+		{
+		}
+
+		else  // year and month are equal 
+		{
+			if ( day_1 != day_2 ) 
+			{
+			}
+
+			else // year month and day are equal 
+			{
+				return compare_hour ( time_1 , time_2 );
+			}
+
+		}
+	}
+
+
+
+	return 0 ;
+	*/
+
+	return 0 ; 
 }
