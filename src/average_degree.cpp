@@ -37,10 +37,13 @@ int N , E ;
 
 int main ()
 {
-	fstream in_tweet ; 
-	ofstream out_file  ("ft2.txt");
+	fstream in_tweet ;
 
-	in_tweet.open ("tweet.txt") ;
+	in_tweet.open ("../tweet_input/tweet.txt") ; 
+
+	ofstream out_file  ("../tweet_output/ft2.txt");
+
+
 
 	//-------------------------------
 	node_list . clear() ;  
