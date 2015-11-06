@@ -99,9 +99,9 @@ int main ()
 
 							avg = float(E) / float(N) ; 
 
-							out_file << " N = "  << N << " E = " << E << " Avg = " << fixed << setprecision(2) << avg<< endl ; 
+							//out_file << " N = "  << N << " E = " << E << " Avg = " << fixed << setprecision(2) << avg<< endl ; 
 
-							//out_file << fixed << setprecision(2) << avg << endl ;
+							out_file << fixed << setprecision(2) << avg << endl ;
 
 						}		
 					}
