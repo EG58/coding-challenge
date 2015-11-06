@@ -95,13 +95,13 @@ int main ()
 						if (N)
 						{
 							cout << endl << "----------Average Degree is " << E / N << endl << endl ; 
-							//out_file << " N = "  << N << " E = " << E << " Avg = " << E/N << endl ; 
 
-							avg = E / N ; 
 
-							// cout << fixed << setprecision(2) << 12.12123 << endl ;
+							avg = float(E) / float(N) ; 
 
-							out_file << fixed << setprecision(2) << avg << endl ;
+							out_file << " N = "  << N << " E = " << E << " Avg = " << fixed << setprecision(2) << avg<< endl ; 
+
+							//out_file << fixed << setprecision(2) << avg << endl ;
 
 						}		
 					}
@@ -182,6 +182,10 @@ int hash_tag ( string line )
 
 	if ( sub [0] == '#') // Hash tagh
 	{
+		if ( sub [sub.size()-1]  == '\"' )
+		{	
+			sub = sub . substr ( 0 , sub.size() -1 );
+		}
 		edge = creat_hash_entity ( sub , edge );
 		clique_size ++ ; 
 	} 
@@ -323,8 +327,10 @@ int creat_edge_entity ( string edge , int clique_size )
 
 	if (sub . size () >= 2 )
 	{
-		cout << " __ " << sub ;
+		//cout << " __ " << sub ;
 		clique . push_back ( sub ) ; 
+
+		cout << " CL" << sub << " " ;  
 	}
 
     }
@@ -336,11 +342,16 @@ int creat_edge_entity ( string edge , int clique_size )
 
     string first_node , second_node ;
 
-    for ( int i = 0 ; i < clique_size ; i ++ )
+    int k , i , j ; 	
+
+    for (  i = 0 ; i < clique_size -1  ; i ++ )
     {
 	first_node = clique . at (i); 	
 
-	for ( int j = i+1 ; j < clique_size ; j ++ )	
+	cout << " first_node = " << i << endl ;
+	cout << " second range is " << i+1 << " to " << clique_size - 1 << " ^^^^"<< endl ; 
+
+	for (  j = i+1 ; j < clique_size ; j ++ )	
 	{
 	
 		second_node = clique . at (j); 	
@@ -362,24 +373,29 @@ int creat_edge_entity ( string edge , int clique_size )
 
 		else 
 		{
-			for ( int k = 0 ; k < edge_list . size () ; k ++ )
-			{
-				cout << "edge_list . at (k) . _tag1 " << edge_list . at (k) . _tag1  ;
-				cout << " edge_list . at (k) . _tag2 " << edge_list . at (k) . _tag2   << endl ; 
+			condition = 0 ; 
 
-				condition = ( edge_list . at (k) . _tag1 == first_node && edge_list . at (k) . _tag2 == second_node ) || ( edge_list . at (k) . _tag2 == first_node && edge_list . at (k) . _tag1 == second_node ) ; 
+			for ( k = 0 ; k < edge_list . size () ; k ++ )
+			{
+				//cout << "edge_list . at (k) . _tag1 " << edge_list . at (k) . _tag1  ;
+				
+				//cout << " edge_list . at (k) . _tag2 " << edge_list . at (k) . _tag2   << endl ; 
+
+				if (  condition == 0 )
+				condition =  (( edge_list . at (k) . _tag1 == first_node && edge_list . at (k) . _tag2 == second_node ) || ( edge_list . at (k) . _tag2 == first_node && edge_list . at (k) . _tag1 == second_node )) ; 
 				
 				if ( condition )
 				{
 				 	edge_list . at (k)  . _time = current_time ; // Update Edge
 
-					cout << "#### tihs is the case" << endl;
+					cout << "#### this is the case" << endl;
 
-					break; 
 				}
+			}
+
 				
-				else // Create Edge
-				{
+			if ( condition == 0   )
+			{
 					new_edge . _tag1 = first_node ;
 					new_edge . _tag2 = second_node ;
 					new_edge . _time = current_time ; 
@@ -389,15 +405,18 @@ int creat_edge_entity ( string edge , int clique_size )
 					edge_list . push_back ( new_edge ) ; 
 
 					E = E + 2 ; 
-				}
 
-			} // for 
+			}
+
+			 
 
 		} // else 
 
 		
 		
 	} // for 
+
+	cout << " ^^^^"<< endl ; 
     }		
 
 
