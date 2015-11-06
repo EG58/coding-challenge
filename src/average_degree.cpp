@@ -68,7 +68,7 @@ int main ()
 	{
 		getline (in_tweet,line);
 
-		//cout << line ;
+		//// cout << line ;
 
 		line_size = line . size () ;
 
@@ -83,18 +83,18 @@ int main ()
 					if ( line [i+2] == 't' && line [i+3] == 'e' && line [i+4] == 'x' && line [i+5] == 't' ) 
 					{
 						 
-						//cout << line  << endl ; 
+						//// cout << line  << endl ; 
 
-						//cout << line . substr (i+6+2,line_size - i+6 ) << endl ; 
+						//// cout << line . substr (i+6+2,line_size - i+6 ) << endl ; 
 
 						//clean_text ( line . substr (i+6+2,line_size - i+6 ) );
 
 						hash_tag ( line );
-						cout << "-------------" << endl ;
+						// cout << "-------------" << endl ;
 
 						if (N)
 						{
-							cout << endl << "----------Average Degree is " << E / N << endl << endl ; 
+							// cout << endl << "----------Average Degree is " << E / N << endl << endl ; 
 
 
 							avg = float(E) / float(N) ; 
@@ -109,7 +109,7 @@ int main ()
 					else if ( (line [i+2] == 'c' && line [i+3] == 'r' && line [i+4] == 'e' && line [i+5] == 'a') && i == 0 ) // Created at 
 					{
 						tweet_time = extract_time (line);
-						cout << "-------------" << endl ;
+						// cout << "-------------" << endl ;
 
 						current_time = tweet_time ; 
 					}
@@ -128,7 +128,7 @@ int main ()
 				
 	}
 
-	cout << endl << "Hello Wolrd" << endl << endl ; 
+	// cout << endl << "Hello Wolrd" << endl << endl ; 
 
 	return  0;
 }
@@ -137,7 +137,7 @@ int main ()
 int clean_text ( string line )
 {
 
-	cout << line << endl ; 
+	// cout << line << endl ; 
 
 	string modified = line ;  
 
@@ -159,8 +159,8 @@ int clean_text ( string line )
 		}
 	}
 
-	cout << "--------Modified --------" << endl ;
-	cout << modified << endl; 
+	// cout << "--------Modified --------" << endl ;
+	// cout << modified << endl; 
 
 	return 0 ;
 }
@@ -178,7 +178,7 @@ int hash_tag ( string line )
     {
         string sub;
         iss >> sub;
-        //cout << "Substring: " << sub << endl;
+        //// cout << "Substring: " << sub << endl;
 
 	if ( sub [0] == '#') // Hash tagh
 	{
@@ -197,16 +197,16 @@ int hash_tag ( string line )
     N = node_list . size (); 
     //-------------Updating N -------------------------	
 	
-    //cout << " EDGE CREATE IS = " << edge << endl ; 
+    //// cout << " EDGE CREATE IS = " << edge << endl ; 
 
-    cout << "Clique size = " << clique_size << endl ; 	    
+    // cout << "Clique size = " << clique_size << endl ; 	    
 	
     if ( clique_size ) 
     {    
 	creat_edge_entity ( edge , clique_size ) ;
     }
 
-    cout << "N is " << N << " E is " << E << endl ; 
+    // cout << "N is " << N << " E is " << E << endl ; 
 
 }
 
@@ -228,7 +228,7 @@ string creat_hash_entity ( string sub , string edge )
 		
 		node_list . push_back (new_entry);
 
-		cout << "Hash Tag " << sub << " Created  " << endl ; 
+		// cout << "Hash Tag " << sub << " Created  " << endl ; 
 	}
 	else // the list was not empty 
 	{
@@ -241,7 +241,7 @@ string creat_hash_entity ( string sub , string edge )
 				
 				node_list . at (i) . _time = current_time ; 	
 
-				cout << "Hash Tag " << sub << " UPDATED  " << endl ; 
+				// cout << "Hash Tag " << sub << " UPDATED  " << endl ; 
 			}
 		
 			else if ( !compare_time ( node_list . at (i) . _time , current_time ) ) // if it is older than 60 sec
@@ -259,7 +259,7 @@ string creat_hash_entity ( string sub , string edge )
 			
 			node_list . push_back (new_entry);
 			
-			cout << "Hash Tag " << sub << " Created  " << endl ; 
+			// cout << "Hash Tag " << sub << " Created  " << endl ; 
 		}
 
 	}
@@ -273,7 +273,7 @@ string creat_hash_entity ( string sub , string edge )
 
 string extract_time (string line)
 {
-	//cout << "Time  =" << line  << endl ; 
+	//// cout << "Time  =" << line  << endl ; 
 
 	string ext_time = line ;  
 
@@ -299,8 +299,8 @@ string extract_time (string line)
 		i++;
 	}
 
-	cout << "--------Modified Time = --------" << endl ;
-	cout << ext_time << endl; 
+	// cout << "--------Modified Time = --------" << endl ;
+	// cout << ext_time << endl; 
 
 
 	return ext_time;
@@ -327,7 +327,7 @@ int creat_edge_entity ( string edge , int clique_size )
     }
     // --------------------------------------- 		
 
-    cout << " Creating Edge " << edge << " clique_size = " << clique_size << " Current_edge_list has " << edge_list . size () << " edges "<< endl ;   
+    // cout << " Creating Edge " << edge << " clique_size = " << clique_size << " Current_edge_list has " << edge_list . size () << " edges "<< endl ;   
 
     istringstream iss(edge);
 
@@ -344,16 +344,16 @@ int creat_edge_entity ( string edge , int clique_size )
 
 	if (sub . size () >= 2 )
 	{
-		//cout << " __ " << sub ;
+		//// cout << " __ " << sub ;
 		clique . push_back ( sub ) ; 
 
-		cout << " CL" << sub << " " ;  
+		// cout << " CL" << sub << " " ;  
 	}
 
     }
     while  ( iss ) ;
 	
-    cout << endl ; 
+    // cout << endl ; 
 
     edge_time new_edge ;
 
@@ -365,15 +365,15 @@ int creat_edge_entity ( string edge , int clique_size )
     {
 	first_node = clique . at (i); 	
 
-	cout << " first_node = " << i << endl ;
-	cout << " second range is " << i+1 << " to " << clique_size - 1 << " ^^^^"<< endl ; 
+	// cout << " first_node = " << i << endl ;
+	// cout << " second range is " << i+1 << " to " << clique_size - 1 << " ^^^^"<< endl ; 
 
 	for (  j = i+1 ; j < clique_size ; j ++ )	
 	{
 	
 		second_node = clique . at (j); 	
 
-		cout << " first_node = " << first_node << " second_node " << second_node << endl ; 
+		// cout << " first_node = " << first_node << " second_node " << second_node << endl ; 
 
 		if ( edge_list . size () == 0 )
 		{
@@ -384,8 +384,8 @@ int creat_edge_entity ( string edge , int clique_size )
 			edge_list . push_back ( new_edge ) ; 
 			E = E + 2 ; 
 
-			cout << "&&& Creating " << first_node << "<__>" << second_node << endl ;
-			cout << "edge_list has " << edge_list . size () << " edges " << endl ; 
+			// cout << "&&& Creating " << first_node << "<__>" << second_node << endl ;
+			// cout << "edge_list has " << edge_list . size () << " edges " << endl ; 
 			
 		}
 
@@ -395,9 +395,9 @@ int creat_edge_entity ( string edge , int clique_size )
 
 			for ( k = 0 ; k < edge_list . size () ; k ++ )
 			{
-				//cout << "edge_list . at (k) . _tag1 " << edge_list . at (k) . _tag1  ;
+				//// cout << "edge_list . at (k) . _tag1 " << edge_list . at (k) . _tag1  ;
 				
-				//cout << " edge_list . at (k) . _tag2 " << edge_list . at (k) . _tag2   << endl ; 
+				//// cout << " edge_list . at (k) . _tag2 " << edge_list . at (k) . _tag2   << endl ; 
 
 				if (  condition == 0 )
 				condition =  (( edge_list . at (k) . _tag1 == first_node && edge_list . at (k) . _tag2 == second_node ) || ( edge_list . at (k) . _tag2 == first_node && edge_list . at (k) . _tag1 == second_node )) ; 
@@ -406,7 +406,7 @@ int creat_edge_entity ( string edge , int clique_size )
 				{
 				 	edge_list . at (k)  . _time = current_time ; // Update Edge
 
-					cout << "#### this is the case" << endl;
+					// cout << "#### this is the case" << endl;
 
 				}
 			}
@@ -420,7 +420,7 @@ int creat_edge_entity ( string edge , int clique_size )
 
 					edge_list . push_back ( new_edge ) ;  
 
-					cout << "&&& Adding " << first_node << "<__>" << second_node << " edge_list . size () = " << edge_list . size () << endl ;
+					// cout << "&&& Adding " << first_node << "<__>" << second_node << " edge_list . size () = " << edge_list . size () << endl ;
 	
 
 					E = E + 2 ; 
@@ -435,7 +435,7 @@ int creat_edge_entity ( string edge , int clique_size )
 		
 	} // for 
 
-	cout << " ^^^^"<< endl ; 
+	// cout << " ^^^^"<< endl ; 
     }		
 
 
@@ -447,7 +447,7 @@ int creat_edge_entity ( string edge , int clique_size )
 
 int compare_time ( string first, string second ) // if first is less than 60 seconds before second
 {
-	cout << "Comparing ( " << first << " , " << second << " )" << endl ; 
+	// cout << "Comparing ( " << first << " , " << second << " )" << endl ; 
 
 	istringstream iss(first);
 	istringstream iss2(second);
@@ -496,12 +496,12 @@ int compare_time ( string first, string second ) // if first is less than 60 sec
 		
     	} while (iss);
 
-	cout << "---------- month2 = "  << month_2 << " day2 = " << day_2 << " time2 = " << time_2  << " year2 = " << year_2 << endl ;
+	// cout << "---------- month2 = "  << month_2 << " day2 = " << day_2 << " time2 = " << time_2  << " year2 = " << year_2 << endl ;
 
 	string date_2 = month_2 + day_2 + year_2 ; 
 	string date_1 = month_1 + day_1 + year_1 ; 
 
-	cout << "data_1 = " << date_1 << " data_2 = " << date_2 << endl ; 
+	// cout << "data_1 = " << date_1 << " data_2 = " << date_2 << endl ; 
 
 	if ( date_1 == date_2 )
 	{
@@ -527,8 +527,8 @@ int compare_hour ( string time_1 , string time_2 )
 	int s2 = atoi ( time_2 . substr (6,2) . c_str() ) ; 
 
  
-	cout << "h1 = " << h1 << " m1 = " << m1 << " s1 = " << s1 << endl ;
-	cout << "h2 = " << h2 << " m2 = " << m2 << " s2 = " << s2 << endl ;
+	// cout << "h1 = " << h1 << " m1 = " << m1 << " s1 = " << s1 << endl ;
+	// cout << "h2 = " << h2 << " m2 = " << m2 << " s2 = " << s2 << endl ;
 
 	int t1 = h1 * 3600 + m1 * 60 + s1 ;
 	int t2 = h2 * 3600 + m2 * 60 + s2 ;
